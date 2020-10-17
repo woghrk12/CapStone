@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public int Turn;
 
     public int MilitaryPower;
-    public int Population;
 
     public GameObject RollDiceBtn;
     public GameObject ActionCanvas;
@@ -21,7 +20,6 @@ public class GameManager : MonoBehaviour
     {
         Turn = 1;
         MilitaryPower = 0;
-        Population = 0;
         LandNum = 1;
     }
 

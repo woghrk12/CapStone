@@ -10,8 +10,6 @@ public class PlayerAction : MonoBehaviour
 
     public void GetResource()
     {
-        Manager.Population += 100;
-
         Manager.RollDiceBtn.SetActive(true);
         Manager.ActionCanvas.SetActive(false);
         Manager.UICanvas.SetActive(true);

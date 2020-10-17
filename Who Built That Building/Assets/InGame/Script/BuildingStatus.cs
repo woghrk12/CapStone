@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ class Building
     }
 
     public State state;
+
+    Queue<char> NeedCompany;
 
     int NeedPopulation;
     int MinPopulation;
