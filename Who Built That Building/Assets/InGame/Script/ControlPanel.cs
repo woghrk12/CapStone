@@ -1,12 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlPanel : MonoBehaviour
 {
+
     public GameObject LogCanvas;
     public GameObject StatusCanvas;
     public GameObject UICanvas;
+
+    public Image BuildingImage;
+    public Text NeedPointText, MinPointText, ScorePointText, TurnPointText;
+
+    void Awake() 
+    {
+
+    }
 
     public void ShowLogPanel() 
     {
@@ -20,8 +30,13 @@ public class ControlPanel : MonoBehaviour
         UICanvas.SetActive(true);
     }
 
-    public void ShowStatusPanel()
+    public void ShowStatusPanel(BuildingStatus BuildingStatus)
     {
+        NeedPointText.text = BuildingStatus.building.getNeedPopulation().ToString();
+        MinPointText.text = BuildingStatus.building.getMinPopulation().ToString();
+        ScorePointText.text = BuildingStatus.building.getScore().ToString();
+        TurnPointText.text = BuildingStatus.building.getCompleteTurn().ToString();
+
         StatusCanvas.SetActive(true);
         UICanvas.SetActive(false);
     }

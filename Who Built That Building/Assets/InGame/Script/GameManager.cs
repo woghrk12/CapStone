@@ -7,18 +7,21 @@ public class GameManager : MonoBehaviour
     public int MaxLandNum = 20;
     public int LandNum;
     public int Dice;
-    public int Turn;
+    public int TotalTurn;
 
     public int MilitaryPower;
 
     public GameObject RollDiceBtn;
     public GameObject ActionCanvas;
     public GameObject UICanvas;
-    public GameObject[] Buildings;
+    public BuildingStatus[] Buildings;
+
+    public int SumPopulation;
+    public int Turn;
 
     void Awake()
     {
-        Turn = 1;
+        TotalTurn = 1;
         MilitaryPower = 0;
         LandNum = 1;
     }

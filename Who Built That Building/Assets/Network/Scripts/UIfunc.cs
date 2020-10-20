@@ -9,7 +9,7 @@ public class UIfunc : MonoBehaviour // 각 Scene별 UI 기능을 서버와 동�
     GameObject networkroommanager; // 서버를 관리하는 NetworkRoomManager를 가져오기 위한 변수.
     NetworkManager networkmanager; // NetworkRoomManager의 NetworkManager를 가져오기 위한 변수.
     [SerializeField] Text hostcode; // 현재 연결된 서버IP를 표시하기 위한 hostcode UI의 Text 변수.
-
+    
     private void Awake() // 각 Scene에 들어왔을때 가장 먼저 실행.
     {
         networkroommanager = GameObject.Find("NetworkRoomManager"); // NetworkRoomManager를 가져옴.

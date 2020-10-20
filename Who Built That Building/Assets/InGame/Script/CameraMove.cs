@@ -9,6 +9,7 @@ public class CameraMove : MonoBehaviour
     public GameManager Manager;
     public GameObject ScoreCanvas;
     public GameObject ReturnInGameCanvas;
+    public GameObject[] BuildingPosition;
 
     public float MoveSpeed;
     public int BuildingNum;
@@ -95,7 +96,7 @@ public class CameraMove : MonoBehaviour
 
         BuildingNum -= 1;
         if (BuildingNum == 0) BuildingNum = Manager.MaxLandNum;
-        Target = Manager.Buildings[BuildingNum - 1];
+        Target = BuildingPosition[BuildingNum - 1];
     }
 
     public void FindAfterLand()
@@ -104,6 +105,6 @@ public class CameraMove : MonoBehaviour
 
         BuildingNum += 1;
         if (BuildingNum > Manager.MaxLandNum) BuildingNum = 1;
-        Target = Manager.Buildings[BuildingNum - 1];
+        Target = BuildingPosition[BuildingNum - 1];
     }
 }
