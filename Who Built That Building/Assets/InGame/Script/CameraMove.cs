@@ -13,8 +13,8 @@ public class CameraMove : MonoBehaviour
 
     public float MoveSpeed;
     public int BuildingNum;
-    bool isFollowing;
-    bool isShowing;
+    bool isFollowing;   // Is Camera following Marker
+    bool isShowing;     // is Camera Showing Map
 
     Vector3 TargetPosition;
     Vector3 ReturnPosition;
@@ -25,13 +25,14 @@ public class CameraMove : MonoBehaviour
         isShowing = false;
         Target = GameObject.FindGameObjectWithTag("Marker");
 
+        // Rearrange Camera ratio
         MainCamera = GetComponent<Camera>();
         Rect rect = MainCamera.rect;
 
         float scaleheight = ((float)Screen.width / Screen.height) / ((float)16 / 9);
         float scalewidth = 1f / scaleheight;
 
-        if (scaleheight < 1)
+        if (scaleheight < 1)   
         {
             rect.height = scaleheight;
             rect.y = (1f - scaleheight) / 2f;
@@ -47,10 +48,11 @@ public class CameraMove : MonoBehaviour
 
     void Update()
     {
-        if (!isShowing)
+        if (!isShowing) // Camera Follow Marker or Land
         {
             if (isFollowing) SetLand();
 
+            // Move Camera to Target Slowly
             TargetPosition.Set(Target.transform.position.x, Target.transform.position.y, this.transform.position.z);
 
             this.transform.position = Vector3.Lerp(this.transform.position, TargetPosition, MoveSpeed * Time.deltaTime);
@@ -62,13 +64,13 @@ public class CameraMove : MonoBehaviour
         BuildingNum = Manager.LandNum;
     }
 
-    public void FindMarker() 
+    public void FindMarker() // Target is Marker
     {
         isFollowing = true;
         Target = GameObject.FindGameObjectWithTag("Marker");
     }
 
-    public void ShowMap() 
+    public void ShowMap() // Show All Map
     {
         isShowing = true;
 
@@ -80,7 +82,7 @@ public class CameraMove : MonoBehaviour
         ReturnInGameCanvas.SetActive(true);
     }
 
-    public void ReturnToInGame() 
+    public void ReturnToInGame() // Return Camera back to Following Target
     {
         isShowing = false;
         MainCamera.orthographicSize = 10f;
@@ -90,7 +92,7 @@ public class CameraMove : MonoBehaviour
         ReturnInGameCanvas.SetActive(false);
     }
 
-    public void FindBeforeLand() 
+    public void FindBeforeLand() // Show Previous Land
     {
         isFollowing = false;
 
@@ -99,7 +101,7 @@ public class CameraMove : MonoBehaviour
         Target = BuildingPosition[BuildingNum - 1];
     }
 
-    public void FindAfterLand()
+    public void FindAfterLand() // Show Next Land
     {
         isFollowing = false;
 

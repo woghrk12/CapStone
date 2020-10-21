@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         LandNum = 1;
     }
 
-    public void RollDice() 
+    public void RollDice() // Roll Dice
     {
         Dice = Random.Range(1, 7);
         LandNum += Dice;
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         if (LandNum > MaxLandNum)
             LandNum = LandNum % MaxLandNum;
 
+        //Player Action
         ActionCanvas.SetActive(true);
         UICanvas.SetActive(false);
         RollDiceBtn.SetActive(false);
